@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Welcome to Connected Blog</h1>
+    {% for post in posts %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">{{ post.title }}</h2>
+                <p class="card-text">{{ post.content }}</p>
+                <p class="text-muted">By {{ post.author }} on {{ post.created_at }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
