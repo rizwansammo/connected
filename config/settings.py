@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 LOGIN_REDIRECT_URL = 'profile'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -9,10 +10,7 @@ SECRET_KEY = 'your-secret-key-here'  # Replace with a secure key in production
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    'rizwansammoblog.azurewebsites.net',
-    # Add other allowed hosts if needed
-]
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
 
 # Application definition
 INSTALLED_APPS = [
