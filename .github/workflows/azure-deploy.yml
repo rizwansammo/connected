@@ -1,0 +1,37 @@
+name: Build and Deploy to Azure App Service
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Log in to Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      # Build and push the Docker image
+      - name: Build and push Docker image
+        run: |
+          docker build -t rizwansammo/connected:latest .
+          docker push rizwansammo/connected:latest
+
+      # Deploy to Azure App Service
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: RizwanSammoBlog
+          resource-group: MyResourceGroup
+          slot-name: production
+          images: rizwansammo/connected:latest
