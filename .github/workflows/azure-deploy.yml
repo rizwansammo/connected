@@ -3,7 +3,7 @@ name: Build and Deploy to Azure App Service
 on:
   push:
     branches:
-      - main  # Ensure this matches your branch name
+      - main  # Trigger on pushes to the main branch
 
 jobs:
   build-and-deploy:
@@ -27,17 +27,11 @@ jobs:
           docker build -t rizwansammo/connected:latest .
           docker push rizwansammo/connected:latest
 
-      # Log in to Azure
-      - name: Log in to Azure
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
       # Deploy to Azure App Service
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v2
         with:
           app-name: RizwanSammoBlog
-          resource-group-name: MyResourceGroup  # Correct input name
+          resource-group: MyResourceGroup
           slot-name: production
           images: rizwansammo/connected:latest
