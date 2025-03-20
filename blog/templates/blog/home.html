@@ -1,129 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'blog/base.html' %}
 
 {% block content %}
-<style>
-    /* General Styles */
-    body {
-        font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f9;
-        color: #333;
-    }
-
-    /* Header */
-    header {
-        background: linear-gradient(135deg, #6a11cb, #2575fc);
-        color: white;
-        padding: 60px 20px;
-        text-align: center;
-    }
-
-    header h1 {
-        font-size: 3rem;
-        margin: 0;
-    }
-
-    header p {
-        font-size: 1.2rem;
-        margin: 10px 0 0;
-    }
-
-    /* Main Content */
-    .container {
-        max-width: 1200px;
-        margin: 40px auto;
-        padding: 20px;
-        background: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-    }
-
-    .container h2 {
-        font-size: 2rem;
-        color: #6a11cb;
-    }
-
-    .container p {
-        font-size: 1.1rem;
-        line-height: 1.6;
-    }
-
-    /* Features Section */
-    .features {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 40px;
-    }
-
-    .feature {
-        flex: 1;
-        padding: 20px;
-        margin: 10px;
-        background: #f9f9f9;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .feature h3 {
-        font-size: 1.5rem;
-        color: #2575fc;
-    }
-
-    .feature p {
-        font-size: 1rem;
-        color: #666;
-    }
-
-    /* Footer */
-    footer {
-        background: #333;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        margin-top: 40px;
-    }
-
-    footer p {
-        margin: 0;
-        font-size: 1rem;
-    }
-</style>
-
-<!-- Header -->
-<header>
-    <h1>Welcome to My Blog</h1>
-    <p>Your go-to place for amazing content and insights</p>
-</header>
-
-<!-- Main Content -->
-<div class="container">
-    <h2>About This Blog</h2>
-    <p>
-        Welcome to my blog! Here, you'll find a collection of articles, tutorials, and insights on various topics.
-        Whether you're a beginner or an expert, there's something here for everyone. Enjoy your stay!
-    </p>
-
-    <!-- Features Section -->
-    <div class="features">
-        <div class="feature">
-            <h3>Latest Posts</h3>
-            <p>Stay updated with the newest articles and tutorials.</p>
+    <h1>Welcome to Connected Blog</h1>
+    {% for post in posts %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">{{ post.title }}</h2>
+                <p class="card-text">{{ post.content }}</p>
+                <p class="text-muted">By {{ post.author }} on {{ post.created_at }}</p>
+            </div>
         </div>
-        <div class="feature">
-            <h3>Expert Insights</h3>
-            <p>Learn from industry experts and thought leaders.</p>
-        </div>
-        <div class="feature">
-            <h3>Community</h3>
-            <p>Join a vibrant community of learners and creators.</p>
-        </div>
-    </div>
-</div>
-
-<!-- Footer -->
-<footer>
-    <p>&copy; 2023 My Blog. All rights reserved.</p>
-</footer>
+    {% endfor %}
 {% endblock %}
