@@ -1,9 +1,25 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h1>Welcome to Connected Blog</h1>
+    <div class="text-center">
+        <h1 class="mb-4">Welcome to Connected Blog</h1>
+        <p class="lead">Your go-to place for tech insights, coding guides, and industry updates.</p>
+    </div>
+
+    <div class="card mt-5 shadow-lg">
+        <div class="card-body">
+            <h2 class="card-title text-center">About Me</h2>
+            <p class="card-text text-center">
+                Hi, I'm <strong>Rizwan Sammo</strong>, a passionate IT Engineer and Developer. I specialize in cloud technologies, DevOps, and backend development.
+                Currently working with **Microsoft 365, Azure, and DevOps practices**, I love building robust IT solutions.
+                This blog is where I share my journey, tips, and technical knowledge. 🚀
+            </p>
+        </div>
+    </div>
+
+    <h2 class="mt-5">Latest Blog Posts</h2>
     {% for post in posts %}
-        <div class="card mb-4">
+        <div class="card mb-4 shadow-sm">
             <div class="card-body">
                 <h2 class="card-title">{{ post.title }}</h2>
                 <p class="card-text">{{ post.content }}</p>
