@@ -13,6 +13,11 @@ jobs:
       # Check out the repository
       - name: Checkout code
         uses: actions/checkout@v3
+        
+      - name: Set up Git config
+        run: |
+          git config --global user.name "rizwansammo" 
+          git config --global user.email "mrizwan.sammo@gmail.com" 
 
       # Log in to Docker Hub
       - name: Log in to Docker Hub
