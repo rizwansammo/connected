@@ -15,6 +15,10 @@ CSRF_TRUSTED_ORIGINS = [
     'https://rizwansammoblog.azurewebsites.net',
 ]
 
+# Redirect to /profile/ after login
+LOGIN_REDIRECT_URL = '/profile/'
+
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
